@@ -82,20 +82,18 @@ async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     revolut_url = f"{REVOLUT_LINK}?note={code}"
 
     text = {
-        'fr': f"Voici votre code de référence unique : *{code}*"
-Veuillez le mettre en description du paiement.
-
-Une fois le paiement effectué, cliquez sur "J'ai payé\".",
-        'en': f"Here is your unique reference code: *{code}*
-Please include it in the payment note.
-
-Once payment is done, click "I have paid\"."
+        'fr': f"Voici votre code de référence unique : *{code}*\n"
+              "Veuillez le mettre en description du paiement.\n\n"
+              'Une fois le paiement effectué, cliquez sur "J\'ai payé".',
+        'en': f"Here is your unique reference code: *{code}*\n"
+              "Please include it in the payment note.\n\n"
+              'Once payment is done, click "I have paid".'
     }
 
     buttons = [
         [InlineKeyboardButton("Payer via PayPal / PayPal", url=paypal_url)],
         [InlineKeyboardButton("Payer via Revolut / Revolut", url=revolut_url)],
-        [InlineKeyboardButton("J'ai payé / I have paid", callback_data=f"paid:{user_id}")]
+        [InlineKeyboardButton("J\'ai payé / I have paid", callback_data=f"paid:{user_id}")]
     ]
 
     await update.message.reply_text(
@@ -126,11 +124,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]]
         await context.bot.send_message(
             chat_id=ADMIN_USERNAME,
-            text=f"🚀 *Nouvelle demande d'abonnement*
-
-Utilisateur: @{user.username}
-ID: {user_id}
-Code: `{code}`",
+            text=f"🚀 *Nouvelle demande d'abonnement*\n\n"
+                 f"Utilisateur: @{user.username}\n"
+                 f"ID: {user_id}\n"
+                 f"Code: `{code}`",
             parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup(keyboard)
         )
