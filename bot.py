@@ -85,11 +85,11 @@ async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
         'fr': f"Voici votre code de référence unique : *{code}*"
 Veuillez le mettre en description du paiement.
 
-Une fois le paiement effectué, cliquez sur "J'ai payé".",
+Une fois le paiement effectué, cliquez sur "J'ai payé\".",
         'en': f"Here is your unique reference code: *{code}*
 Please include it in the payment note.
 
-Once payment is done, click "I have paid"."
+Once payment is done, click "I have paid\"."
     }
 
     buttons = [
