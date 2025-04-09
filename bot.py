@@ -82,7 +82,7 @@ async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     revolut_url = f"{REVOLUT_LINK}?note={code}"
 
     text = {
-        'fr': f"Voici votre code de référence unique : *{code}*
+        'fr': f"Voici votre code de référence unique : *{code}*"
 Veuillez le mettre en description du paiement.
 
 Une fois le paiement effectué, cliquez sur "J'ai payé".",
